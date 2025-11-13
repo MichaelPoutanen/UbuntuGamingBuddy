@@ -3,7 +3,8 @@
         xmlns:vm="using:UbuntuGamingBuddy.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="250"
+        Width="300" Height="175"
         x:Class="UbuntuGamingBuddy.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
@@ -15,18 +16,21 @@
         <vm:MainWindowViewModel />
     </Design.DataContext>
 
-    <StackPanel Spacing="16" Margin="24" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock Text="Ubuntu Gaming Buddy" 
-                   FontSize="22" 
-                   FontWeight="Bold" 
+    <StackPanel Margin="8" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock Text="Ubuntu Gaming Buddy"
+                   FontSize="18"
                    HorizontalAlignment="Center" />
-        <Button Content="Enable Gaming Mode" Command="{Binding EnableGamingModeCommand}" Width="200" />
-        <Button Content="Disable Gaming Mode" Command="{Binding DisableGamingModeCommand}" Width="200" />
-        
-        <TextBlock Text="{Binding GamingModeStatus}" 
-                   FontSize="24" 
-                   FontWeight="Bold" 
-                   HorizontalAlignment="Center"
-                   Margin="0,16,0,0" />
+        <Button HorizontalAlignment="Center"
+                Content="Enable Gaming Mode"
+                Command="{Binding EnableGamingModeCommand}"
+                Width="165" />
+        <Button HorizontalAlignment="Center"
+                Content="Disable Gaming Mode"
+                Command="{Binding DisableGamingModeCommand}"
+                Width="165" />
+        <TextBlock Text="{Binding GamingModeStatus}"
+                   FontSize="20"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center" />
     </StackPanel>
 </Window>

@@ -1,14 +1,27 @@
-This is a simple tool that helps playing games on services like ShadowPC more comfortable.
 
-Since I am no longer having a beefy gaming PC, I use ShadowPC to play games - but there were always two issues that bugged me:
+# Ubuntu gaming Buddy
+This is a simple tool that helps playing games on services like ShadowPC more comfortably.
 
-The first one being, that I couldn't alt+tab inside of that VM without switching windows on my Ubuntu. The second one was, that sporadically the "This application doesn't respond" window came up, even though it worked just fine - and one wrong key press there and you'd kill it.
+# What does this tool do?
+It allows you to use alt+tab inside of the VM and disables the "This program does not responde - close or terminate?"-Timer.
 
-So, I made this small program, which basically is a wrapper around a few console commands that disables both - that way you can alt-tab on the VM and it won't come nagging and telling you that the window doesn't react any longer.
+# How does it do that?
+
+When you activate "Gaming Mode", the Shortcut for Alt+Tab gets disabled and the Wait-Timer for the Nonresponsive window turned off - that way, when you press alt+tab inside of your VM, Ubuntu doesn't capture it, but the VM does - allowing for alt+tabbing inside of that window, that runs the VM, instead of on your actual device.
+
+After pressing "Turn off gaming mode", those values get reset.
+
+# How to use
+You can either click the buttons inside of the GUI, or on the Trial Icon.
+
+You can minimize the window to hide it, then you can control the tool via the Trial Icon - right click on it, press open to open the window again or Toggle Game Mode to turn game mode on/off, or quit to quit the program.
+
+The colour of the Icon will change, depending on whether or not gaming mode is turned on or not.
 
 
-You can also re-enable the warnings again by pressing "Disable gaming mode" (or right-click on the tray icon and toggle game mode).
+# More features?
+I will add features as I think of (and need) them.
+
+If you have ideas or wishes, feel free to tell me and I will probably implement them, if they are not way too complex :)
 
 
-
-A little warning: I made this specifically to my needs, so if you use some special configuration in your Gnome/Ubuntu-Settings, this might mess it up - I will add a "Backup settings on first start"-Thingy soon, though, so that it will always reset to your personal preferences instead of what I use (system standard).

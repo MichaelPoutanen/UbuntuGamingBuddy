@@ -3,6 +3,7 @@
   <component name="AvaloniaProject">
     <option name="projectPerEditor">
       <map>
+        <entry key="UbuntuGamingBuddy/App.axaml" value="UbuntuGamingBuddy/UbuntuGamingBuddy.csproj" />
         <entry key="UbuntuGamingBuddy/Views/MainWindow.axaml" value="UbuntuGamingBuddy/UbuntuGamingBuddy.csproj" />
       </map>
     </option>
