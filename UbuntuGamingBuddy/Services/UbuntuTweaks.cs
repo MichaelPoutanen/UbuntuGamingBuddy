@@ -61,7 +61,7 @@ public static class UbuntuTweaks
     
     private static string RunCommand(string command)
     {
-        using var process = new Process();
+        using Process process = new Process();
         process.StartInfo.FileName = "bash";
         process.StartInfo.Arguments = $"-c \"{command}\"";
         process.StartInfo.RedirectStandardOutput = true;

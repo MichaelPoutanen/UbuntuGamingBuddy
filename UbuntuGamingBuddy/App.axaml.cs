@@ -2,7 +2,6 @@ using System;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
 using Avalonia.Platform;
@@ -88,7 +87,7 @@ public partial class App : Application
         }
     }
 
-    private string GetIconPath(bool gamingModeEnabled)
+    private static string GetIconPath(bool gamingModeEnabled)
     {
         return
             gamingModeEnabled
