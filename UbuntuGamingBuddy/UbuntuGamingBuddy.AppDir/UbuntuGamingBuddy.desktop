@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Ubuntu Gaming Buddy
+Exec=UbuntuGamingBuddy
+Icon=ubuntu-gaming-buddy
+Type=Application
+Categories=Game
+Comment=A helper app to make it more comfortable to play on Ubuntu using a streaming service or Remote desktop
