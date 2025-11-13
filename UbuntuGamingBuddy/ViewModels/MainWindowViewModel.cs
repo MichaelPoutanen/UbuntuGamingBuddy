@@ -8,29 +8,31 @@ public partial class MainWindowViewModel : ViewModelBase
 {
     public MainWindowViewModel()
     {
-        UpdateShortcutStatus();
+        IsGamingModeEnabled = UbuntuTweaks.AreShortcutsDisabled();
+        UbuntuTweaks.GamingModeChanged += OnGamingModeChanged;
     }
-    
-    [ObservableProperty] private string? _gamingModeStatus;
 
-    private void UpdateShortcutStatus()
-    {
-        GamingModeStatus = UbuntuTweaks.AreShortcutsDisabled()
-            ? "Gaming mode is active"
-            : "Gaming mode is not active";
-    }
+    [ObservableProperty] private bool _isGamingModeEnabled;
+    
+    public string GamingModeStatus => IsGamingModeEnabled? "Gaming mode is active"
+        : "Gaming mode is not active";
+    
     
     [RelayCommand]
     private void EnableGamingMode()
     {
         UbuntuTweaks.EnableFullGamingMode();
-        UpdateShortcutStatus();
     }
     
     [RelayCommand]
     private void DisableGamingMode()
     {
         UbuntuTweaks.DisableFullGamingMode();
-        UpdateShortcutStatus();
+    }
+    
+    private void OnGamingModeChanged(bool enabled)
+    {
+        IsGamingModeEnabled = enabled;
+        OnPropertyChanged(nameof(GamingModeStatus));
     }
 }

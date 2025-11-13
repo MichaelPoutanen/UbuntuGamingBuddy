@@ -12,13 +12,21 @@
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <vm:MainWindowViewModel/>
+        <vm:MainWindowViewModel />
     </Design.DataContext>
 
     <StackPanel Spacing="16" Margin="24" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock Text="Ubuntu Gaming Buddy" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center"/>
-        <Button Content="Enable Gaming Mode" Command="{Binding EnableGamingModeCommand}" Width="200"/>
-        <Button Content="Disable Gaming Mode" Command="{Binding DisableGamingModeCommand}" Width="200"/>
-        <TextBlock Text="{Binding GamingModeStatus}" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,16,0,0"/>
+        <TextBlock Text="Ubuntu Gaming Buddy" 
+                   FontSize="22" 
+                   FontWeight="Bold" 
+                   HorizontalAlignment="Center" />
+        <Button Content="Enable Gaming Mode" Command="{Binding EnableGamingModeCommand}" Width="200" />
+        <Button Content="Disable Gaming Mode" Command="{Binding DisableGamingModeCommand}" Width="200" />
+        
+        <TextBlock Text="{Binding GamingModeStatus}" 
+                   FontSize="24" 
+                   FontWeight="Bold" 
+                   HorizontalAlignment="Center"
+                   Margin="0,16,0,0" />
     </StackPanel>
 </Window>

@@ -25,7 +25,7 @@ public static class UbuntuTweaks
 
     public static void DisableHangWarning()
     {
-        RunGSettings("org.gnome.mutter check-alive-timeout 0");
+        RunGSettings("set org.gnome.mutter check-alive-timeout 0");
     }
 
     public static void EnableHangWarning()
