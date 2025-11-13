@@ -11,6 +11,7 @@ using UbuntuGamingBuddy.Views;
 
 namespace UbuntuGamingBuddy;
 
+// ReSharper disable once PartialTypeWithSinglePart
 public partial class App : Application
 {
     private TrayIcon? _trayIcon;
@@ -36,11 +37,23 @@ public partial class App : Application
 
             desktop.MainWindow = _mainWindow;
             InitializeTrayIcon();
+            
+            //Hide the window when minimized; Restorable via the Tray Icon
+            desktop.MainWindow.PropertyChanged += (_, e) =>
+            {
+                if (e.Property.Name == nameof(Window.WindowState) &&
+                    desktop.MainWindow.WindowState == WindowState.Minimized)
+                {
+                    desktop.MainWindow.Hide();
+                }
+            };
             UbuntuTweaks.GamingModeChanged += UpdateTrayIcon;
         }
 
         base.OnFrameworkInitializationCompleted();
     }
+    
+    #region Methods
 
     private void InitializeTrayIcon()
     {
@@ -55,26 +68,28 @@ public partial class App : Application
         NativeMenu menu = [];
 
         NativeMenuItem openItem = new("Open");
-        openItem.Click += (s, e) => _mainWindow?.Show();
+        openItem.Click += (_, _) => _mainWindow?.Show();
         menu.Items.Add(openItem);
 
         menu.Items.Add(new NativeMenuItemSeparator());
 
         NativeMenuItem toggleItem = new("Toggle Gaming Mode");
-        toggleItem.Click += (s, e) => ToggleGamingMode();
+        toggleItem.Click += (_, _) => ToggleGamingMode();
         menu.Items.Add(toggleItem);
 
         menu.Items.Add(new NativeMenuItemSeparator());
 
         NativeMenuItem quitItem = new("Quit");
-        quitItem.Click += (s, e) => Environment.Exit(0);
+        quitItem.Click += (_, _) => Environment.Exit(0);
         menu.Items.Add(quitItem);
 
         _trayIcon.Menu = menu;
         _trayIcon.IsVisible = true;
+        
+        _trayIcon.Clicked += (_, _) => ToggleWindowVisibility();
     }
 
-    private void ToggleGamingMode()
+    private static void ToggleGamingMode()
     {
         bool isDisabled = UbuntuTweaks.AreShortcutsDisabled();
         if (isDisabled)
@@ -84,6 +99,23 @@ public partial class App : Application
         else
         {
             UbuntuTweaks.EnableFullGamingMode();
+        }
+    }
+    
+    private void ToggleWindowVisibility()
+    {
+        if (_mainWindow is null)
+            return;
+
+        if (_mainWindow.IsVisible)
+        {
+            _mainWindow.Hide();
+        }
+        else
+        {
+            _mainWindow.Show();
+            _mainWindow.WindowState = WindowState.Normal;
+            _mainWindow.Activate();
         }
     }
 
@@ -104,4 +136,6 @@ public partial class App : Application
 
         _trayIcon.IsVisible = true;
     }
+    
+    #endregion
 }
