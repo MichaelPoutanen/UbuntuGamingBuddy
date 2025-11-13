@@ -1,15 +1,18 @@
 using System;
 using System.Diagnostics;
+// ReSharper disable MemberCanBePrivate.Global
 
 namespace UbuntuGamingBuddy.Services;
 
-public class UbuntuTweaks
+public static class UbuntuTweaks
 {
+    public static event Action<bool>? GamingModeChanged;
     public static void DisableShortcuts()
     {
         RunGSettings("set org.gnome.desktop.wm.keybindings switch-applications \"[]\"");
         RunGSettings("set org.gnome.desktop.wm.keybindings switch-windows \"[]\"");
         RunGSettings("set org.gnome.shell.keybindings toggle-overview \"[]\"");
+        GamingModeChanged?.Invoke(true);
     }
 
     public static void EnableShortcuts()
@@ -17,6 +20,7 @@ public class UbuntuTweaks
         RunGSettings("reset org.gnome.desktop.wm.keybindings switch-applications");
         RunGSettings("reset org.gnome.desktop.wm.keybindings switch-windows");
         RunGSettings("reset org.gnome.shell.keybindings toggle-overview");
+        GamingModeChanged?.Invoke(false);
     }
 
     public static void DisableHangWarning()

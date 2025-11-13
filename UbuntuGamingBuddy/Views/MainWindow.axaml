@@ -19,6 +19,6 @@
         <TextBlock Text="Ubuntu Gaming Buddy" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center"/>
         <Button Content="Enable Gaming Mode" Command="{Binding EnableGamingModeCommand}" Width="200"/>
         <Button Content="Disable Gaming Mode" Command="{Binding DisableGamingModeCommand}" Width="200"/>
-        <TextBlock Text="{Binding GamingModeStatus}" FontSize="16" HorizontalAlignment="Center" Margin="0,16,0,0"/>
+        <TextBlock Text="{Binding GamingModeStatus}" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,16,0,0"/>
     </StackPanel>
 </Window>
